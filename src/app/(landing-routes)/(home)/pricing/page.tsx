@@ -13,12 +13,11 @@ import { getApiUrl } from "~/utils/getApiUrl";
 interface BillingPlan {
   id: string;
   name: string;
-  price: string;
+  price: number;
 }
 
-const getAnnualPrice = (monthlyPrice: string) => {
-  const monthly = Number.parseFloat(monthlyPrice);
-  const annual = monthly * 12 * 0.8;
+const getAnnualPrice = (monthlyPrice: number) => {
+  const annual = monthlyPrice * 12 * 0.8;
   return annual.toFixed(2);
 };
 
@@ -37,7 +36,10 @@ export default function Pricing() {
       try {
         const apiUrl = await getApiUrl();
         const response = await axios.get(`${apiUrl}/api/v1/billing-plans`);
-        setPlans(response.data.data);
+        const filteredPlans = response.data.data.filter((plan: BillingPlan) =>
+          ["Basic", "Premium"].includes(plan.name)
+        );
+        setPlans(filteredPlans);
       } catch {
         setError("Failed to fetch billing plans");
       } finally {
