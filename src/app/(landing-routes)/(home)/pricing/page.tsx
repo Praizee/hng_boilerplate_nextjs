@@ -203,30 +203,61 @@ export default function Pricing() {
                     />
                     24-hour support response time
                   </div>
-                  <div
-                    className="mb-3 flex items-center gap-5 text-[16px]"
-                    data-testid={`${plan.name.toLowerCase()}-feature-5`}
-                  >
-                    <Image
-                      src="/images/checkmark.svg"
-                      alt=""
-                      height={30}
-                      width={30}
-                    />
-                    Marketing advisor
-                  </div>
-                  <div
-                    className="mb-3 flex items-center gap-5 text-[16px]"
-                    data-testid={`${plan.name.toLowerCase()}-feature-6`}
-                  >
-                    <Image
-                      src="/images/checkmark.svg"
-                      alt=""
-                      height={30}
-                      width={30}
-                    />
-                    Custom integration
-                  </div>
+                  {plan.name === "Basic" ? (
+                    <>
+                      <div
+                        className="mb-3 flex items-center gap-5 text-[16px] text-[#ACACAC]"
+                        data-testid={`${plan.name.toLowerCase()}-feature-5`}
+                      >
+                        <Image
+                          src="/images/cancel.svg"
+                          alt=""
+                          height={30}
+                          width={30}
+                        />
+                        Marketing advisor
+                      </div>
+                      <div
+                        className="mb-3 flex items-center gap-5 text-[16px] text-[#ACACAC]"
+                        data-testid={`${plan.name.toLowerCase()}-feature-6`}
+                      >
+                        <Image
+                          src="/images/cancel.svg"
+                          alt=""
+                          height={30}
+                          width={30}
+                        />
+                        Custom integration
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div
+                        className="mb-3 flex items-center gap-5 text-[16px]"
+                        data-testid={`${plan.name.toLowerCase()}-feature-5`}
+                      >
+                        <Image
+                          src="/images/checkmark.svg"
+                          alt=""
+                          height={30}
+                          width={30}
+                        />
+                        Marketing advisor
+                      </div>
+                      <div
+                        className="mb-3 flex items-center gap-5 text-[16px]"
+                        data-testid={`${plan.name.toLowerCase()}-feature-6`}
+                      >
+                        <Image
+                          src="/images/checkmark.svg"
+                          alt=""
+                          height={30}
+                          width={30}
+                        />
+                        Custom integration
+                      </div>
+                    </>
+                  )}
                   <Button
                     size="lg"
                     className="mt-[51px] w-full bg-primary text-background"
